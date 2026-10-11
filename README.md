@@ -1,7 +1,7 @@
 # Econometric Analysis of NBA Scoring Metrics & Team Win Percentages
 
 ## 📌 Executive Summary
-> 📄 **[Read the Full Research Paper (PDF)](outputs/ECON_317_Research_Paper.pdf)**
+> 📄 **[Read the Full Research Paper (PDF)](ECON317_QUEEN_QADIR.pdf)**
 
 What drives team success in professional basketball? Is victory primarily a function of high-volume individual scoring, or do team-wide offensive efficiency metrics provide superior predictive power? This research project investigates the determinants of regular-season success across all 30 NBA franchises ($N = 30$) using multivariate Ordinary Least Squares (OLS) regression modeling built entirely in **Microsoft Excel**.
 
