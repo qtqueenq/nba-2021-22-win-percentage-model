@@ -40,14 +40,3 @@ $$\text{Win Pct} = \beta_0 + \beta_1(\text{Point Differential}) + \beta_2(\text{
 * **Individual Volume vs. Team Efficiency:** Top scorer PPG alone is a weak predictor of overall win percentage ($R^2 = 0.34$), confirming that high-volume scoring without team-wide efficiency does not guarantee regular-season success.
 * **Point Differential Power:** Net point differential ($\text{Team PPG} - \text{Opponent PPG}$) accounts for nearly **67% of the variance** in team winning percentages ($p < 0.001$).
 * **Rigorous Validation:** Evaluated $t$-statistics, standard errors, and $p$-values natively within Excel to ensure coefficient significance and validate economic assumptions.
-
----
-
-## 📁 Repository Structure
-```text
-.
-├── data/
-│   └── nba_team_stats.csv              # Raw 30-Team NBA Performance Dataset
-├── outputs/
-│   └── econ_317_analysis_workbook.xlsx # Fully Audited Excel Model & Regression Outputs
-└── README.md                           # Project Documentation
