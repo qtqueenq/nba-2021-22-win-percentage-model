@@ -1,44 +1,55 @@
-# Econometric Analysis of NBA Scoring Metrics & Team Win Percentages
+# Does a Team's Top Scorer Drive Winning? NBA 2021-22 Regression Analysis
 
-## 📌 Executive Summary
-> 📄 **[Read the Full Research Paper (PDF)](outputs/ECON317_QUEEN_QADIR.pdf)**
+Multiple regression analysis in Microsoft Excel of how each NBA team's leading scorer and team scoring relate to team win percentage (N = 30 teams). Course project for ECON 317, December 2021.
 
-What drives team success in professional basketball? Is victory primarily a function of high-volume individual scoring, or do team-wide offensive efficiency metrics provide superior predictive power? This research project investigates the determinants of regular-season success across all 30 NBA franchises ($N = 30$) using multivariate Ordinary Least Squares (OLS) regression modeling built entirely in **Microsoft Excel**.
+**Full paper:** [`outputs/ECON317_QUEEN_QADIR.pdf`](outputs/ECON317_QUEEN_QADIR.pdf) | **Data:** `data/`
 
-By evaluating individual player production alongside team-level scoring output, this study demonstrates how iterative model respecification and statistical diagnostics systematically increase explanatory power ($R^2$ improving from **0.34 to 0.67**).
+## Question
 
----
+Does having a high-scoring star lead to more team wins, or does winning depend more on how much the whole team scores?
 
-## 🛠️ Tech Stack & Analytical Tools
-* **Software:** Microsoft Excel
-* **Statistical Analysis:** Data Analysis Toolpak (Regression, Descriptive Statistics, Correlation Matrices)
-* **Data Wrangling:** Power Query, XLOOKUP, PivotTables, Conditional Formatting
-* **Visualization:** Excel Charts & Dynamic Dashboards
+## Data
 
----
+- Top scorer for each of the 30 teams: points, field goal, three-point and free throw stats, from NBA.com.
+- Team win percentage, wins, and team points per game, from NBA.com standings.
+- Snapshot taken December 2, 2021, roughly 20 games into the 2021-22 season (about a quarter of the schedule). Results are early-season and based on a small sample.
 
-## 🔬 Econometric Methodology & Model Specification
+## Method
 
-To test for omitted variable bias and evaluate the stability of scoring parameters, three regression models were iteratively specified:
+Regressions run with Excel's Data Analysis ToolPak, with the specification revised after the first attempt:
 
-### 1. **Model 1: Bivariate Baseline (Top Scorer Impact)**
-Evaluates whether relying on an elite individual scorer predicts overall team winning percentage:
-$$\text{Win Pct} = \beta_0 + \beta_1(\text{Top Scorer PPG}) + u$$
+**Model 1:** win % on the star's share of team points, plus the star's FG%, 3P% and FT%.
+**Model 2:** win % on the star's points per game and team points per game.
 
-### 2. **Model 2: Multivariate Expansion (Team Offense & Defense)**
-Incorporates team-level offensive scoring average and defensive points allowed to isolate net scoring efficiency:
-$$\text{Win Pct} = \beta_0 + \beta_1(\text{Top Scorer PPG}) + \beta_2(\text{Team PG}) + \beta_3(\text{Opponent PPG}) + u$$
+I moved from Model 1 to Model 2 because Model 1 used overlapping variables and fit poorly.
 
-### 3. **Model 3: Full Specification (Net Point Differential)**
-Includes point differential and net efficiency controls to address structural omitted variable bias:
-$$\text{Win Pct} = \beta_0 + \beta_1(\text{Point Differential}) + \beta_2(\text{Top Scorer PPG}) + u$$
+## Results
 
----
+| | Model 1 | Model 2 |
+|---|---|---|
+| R-squared | 0.34 | 0.67 |
+| Adjusted R-squared | 0.23 | 0.64 |
+| Observations | 30 | 30 |
+| Star PPG | | 2.08 (p = 0.003) |
+| Team PPG | | 2.35 (p < 0.001) |
 
-## 📊 Key Findings & Statistical Insights
+Model 2 (win % measured in percentage points): `win% = -249.46 + 2.083 (star PPG) + 2.352 (team PPG)`
 
-* **Individual Volume vs. Team Efficiency:** Top scorer PPG alone is a weak predictor of overall win percentage ($R^2 = 0.34$), confirming that high-volume scoring without team-wide efficiency does not guarantee regular-season success.
-* **Point Differential Power:** Net point differential ($\text{Team PPG} - \text{Opponent PPG}$) accounts for nearly **67% of the variance** in team winning percentages ($p < 0.001$).
-* **Rigorous Validation:** Evaluated $t$-statistics, standard errors, and $p$-values natively within Excel to ensure coefficient significance and validate economic assumptions.
+Single-variable fits: team PPG alone explains about 53% of the variation in win percentage, and the top scorer's PPG alone about 40%.
 
----
+**Takeaways**
+
+- Team scoring matters more than one player's scoring, though both are statistically significant together.
+- Holding team scoring constant, each extra point per game from the top scorer is associated with about 2 more percentage points of win percentage.
+- Scoring is not destiny: Brooklyn's Kevin Durant (28.6 PPG) led a lower win percentage than Phoenix's Devin Booker (23.2 PPG), 71.4% to 85.7%.
+
+## Limitations
+
+- Only 30 observations, early in the season, so estimates are noisy.
+- The star's points are part of team points, so the two predictors overlap by construction.
+- Only offense is measured. Defense, injuries and strength of schedule are omitted, so these are associations, not causal effects.
+- I did not run formal diagnostic tests such as heteroskedasticity or normality checks on these models. [Add them if you do.]
+
+## Tools
+
+Microsoft Excel: Data Analysis ToolPak (regression, descriptive statistics), charts.
