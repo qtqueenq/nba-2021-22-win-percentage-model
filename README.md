@@ -21,15 +21,15 @@ To test for omitted variable bias and evaluate the stability of scoring paramete
 
 ### 1. **Model 1: Bivariate Baseline (Top Scorer Impact)**
 Evaluates whether relying on an elite individual scorer predicts overall team winning percentage:
-$$\text{Win\_Pct} = \beta_0 + \beta_1(\text{Top\_Scorer\_PPG}) + u$$
+$$\text{Win Pct} = \beta_0 + \beta_1(\text{Top Scorer PPG}) + u$$
 
 ### 2. **Model 2: Multivariate Expansion (Team Offense & Defense)**
 Incorporates team-level offensive scoring average and defensive points allowed to isolate net scoring efficiency:
-$$\text{Win\_Pct} = \beta_0 + \beta_1(\text{Top\_Scorer\_PPG}) + \beta_2(\text{Team\_PPG}) + \beta_3(\text{Opponent\_PPG}) + u$$
+$$\text{Win Pct} = \beta_0 + \beta_1(\text{Top Scorer PPG}) + \beta_2(\text{Team PG}) + \beta_3(\text{Opponent PPG}) + u$$
 
 ### 3. **Model 3: Full Specification (Net Point Differential)**
 Includes point differential and net efficiency controls to address structural omitted variable bias:
-$$\text{Win\_Pct} = \beta_0 + \beta_1(\text{Point\_Differential}) + \beta_2(\text{Top\_Scorer\_PPG}) + u$$
+$$\text{Win Pct} = \beta_0 + \beta_1(\text{Point Differential}) + \beta_2(\text{Top Scorer PPG}) + u$$
 
 ---
 
